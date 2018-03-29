@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>YouTube Downloader</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/grayscale.min.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <header class="masthead">
+      <div class="intro-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h1 style="color:white">Free YouTube Downloader</h1>
+              <p class="intro-text">Download videos from YouTube for free. Audio formats also available.
+                <br>-Created by coderaavan</p>
+              <div class="container-fluid" id="id1">
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <img src="{{dict['thumbnail_url']}}" alt="Image not available!!">
+                      <p>{{dict["title"]}}</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <form action="/downloading" method="POST">
+                        <div class="form-group" style="display:none">
+                          <label class="col-sm-2 control-label">URL:</label>
+                          <div class="col-sm-10">
+                          <input class="form-control" name="url" type="text" placeholder="{{dict['link']}}" value="{{dict['link']}}">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label>Select Quality:</label>
+                          <select class="form-control" name="quality">
+                            {% if dict["720p"]==True %}
+                            <option>720p</option>
+                            {% endif %}
+                            {% if dict["360p"]==True %}
+                            <option>360p</option>
+                            {% endif %}
+                            {% if dict["audio"]==True %}
+                            <option>Audio Only</option>
+                            {% endif %}
+                          </select>
+                        </div>
+                        <button type="submit" class="btn btn-default" onclick="myFunc()">Download</button>
+                      </form>
+                    </div>
+                  </div>
+              </div>
+              <div id="id2" style="display:none">
+                <img src="https://loading.io/spinners/hourglass/lg.sandglass-time-loading-gif.gif">
+                <p>Your video is being downloaded...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+    <!-- Footer -->
+    <footer>
+      <div class="container text-center">
+        <p>Copyright &copy; Your Website 2018</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="../static/js/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="../static/js/grayscale.min.js"></script>
+
+    <script>
+      function myFunc(){
+        document.getElementById("id1").style.display="none";
+        document.getElementById("id2").style.display="block";
+      }
+    </script>
+
+  </body>
+
+</html>
